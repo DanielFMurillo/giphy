@@ -44,11 +44,10 @@ $.ajax({
            		gifDiv.prepend(p);
            		gifDiv.prepend(image);
            		$("#gifs").prepend(gifDiv);
-
       		}
       	});
       }); 
-
+//creating an add button
 $("#add").on("click", function(){
     var input = $("#input").val();
     var buttons = $("<button>")
@@ -59,7 +58,7 @@ $("#add").on("click", function(){
         buttons.attr("data-state", "animate");
 });
 
-//event delegation
+//animate gifs when clicking on them. event delegation
 $("#gifs").on("click", "img" ,function(){
         var state = $(this).attr("data-state");
         console.log($(this));
@@ -70,8 +69,6 @@ $("#gifs").on("click", "img" ,function(){
        } else {
           $(this).attr("src", $(this).attr("data-still"));
           $(this).attr("data-state", "still");
-
-
    }
 });
 

@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 // create an array of topics
 var movies = ["The Hangover","Step Brothers", "Dumb and Dumber", "White Chicks", "Superbad", "21 Jump Street"];
-
 	for (i = 0; i < movies.length; i++){
 		    var buttons =	$("<button>")
         var buttonsDiv = $("#buttonsDiv");
@@ -13,22 +12,10 @@ var movies = ["The Hangover","Step Brothers", "Dumb and Dumber", "White Chicks",
         buttons.attr("data-movie", movies[i]);
         buttons.attr("data-state", "still");
         buttons.attr("data-state", "animate");
-
-
 };
 
-$("#add").on("click", function(){
-    var input = $("#input").val();
-    // var buttons = $(<"button>")
-        buttons.text(input);
-        $("#buttonsDiv").append(buttons);
-
-});
-
-
-
-
-$("button").on("click", function() {
+//event delegation
+$("#buttonsDiv").on("click", "button", function() {
 		var movie = $(this).attr("data-movie");
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + movie + "&api_key=dc6zaTOxFJmzC";		
 		// console.log(this);
@@ -60,13 +47,20 @@ $.ajax({
            		$("#gifs").prepend(gifDiv);
 
       		}
-
       	});
-
       }); 
 
+$("#add").on("click", function(){
+    var input = $("#input").val();
+    var buttons = $("<button>")
+        buttons.text(input);
+        $("#buttonsDiv").append(buttons);
+        buttons.attr("data-movie", input);
+        buttons.attr("data-state", "still");
+        buttons.attr("data-state", "animate");
+});
 
-
+//event delegation
 $("#gifs").on("click", "img" ,function(){
         var state = $(this).attr("data-state");
         console.log($(this));
@@ -79,13 +73,6 @@ $("#gifs").on("click", "img" ,function(){
           $(this).attr("data-state", "still");
 
 
-        }
-
+   }
 });
 
-
-
-// $("#item").on("click",function(){
-
-  
-// }

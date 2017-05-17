@@ -43,7 +43,6 @@ $.ajax({
               image.attr("data-animate", results[i].images.fixed_height.url);
            		gifDiv.prepend(p);
            		gifDiv.prepend(image);
-
            		$("#gifs").prepend(gifDiv);
 
       		}

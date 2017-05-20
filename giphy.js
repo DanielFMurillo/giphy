@@ -32,7 +32,6 @@ $.ajax({
       console.log(response);
       		var results = response.data;
       		// console.log(response);
-
       		for (var i = 0; i < results.length; i++) {
       			var gifDiv = $("<div class='item'>");
       			var rating = results[i].rating;
@@ -48,7 +47,7 @@ $.ajax({
       	});
       }); 
 //creating an add button
-$("#add").on("click", function(){
+$("#add").on("click", function() {
     var input = $("#input").val();
     var buttons = $("<button>")
         buttons.text(input);
@@ -62,7 +61,6 @@ $("#add").on("click", function(){
 $("#gifs").on("click", "img" ,function(){
         var state = $(this).attr("data-state");
         console.log($(this));
-
         if(state === "still"){
           $(this).attr("src", $(this).attr("data-animate"));
           $(this).attr("data-state", "animate");
